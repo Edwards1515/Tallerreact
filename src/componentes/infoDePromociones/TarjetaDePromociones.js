@@ -18,7 +18,7 @@ class TarjetaDeDocente extends Component {
                                 <h4>{this.props.restaurante.contenido}</h4>
                                 <br></br>
                                 <p>Esta promoción es valida hasta: <br></br>{this.props.restaurante.fechaExpiracion} </p>
-                                <br/><br/><br/><h3 >$5.00</h3>
+                                <br/><br/><br/><h3 >{this.props.restaurante.precio}</h3>
                                 <ul className="list">
 
                                     

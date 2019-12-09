@@ -17,31 +17,19 @@ class App extends Component {
         nombreDelCriterio: "nombre",
         descendente: false
       },
-      arrayDeProfesores :[],
-      arrayDeRestaurantes1:[]
+      arrayDeRestaurantes :[],
+      arrayDePromociones:[]
     }
   }
 
   componentDidMount() {
 
-    // fetch('https://curso-ananke-back.herokuapp.com/data/obtenerTodosLosDocentes',
-    //   {
-    //     method: 'post',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       nombre: asdasd,
-    //       valor: asdasd
-    //     })
-    //   })
-    //https://tallerfinal.herokuapp.com/taller/obtenerTodosLosRestaurantes
-    fetch('https://curso-ananke-back.herokuapp.com/data/obtenerTodosLosDocentes')
+    fetch('https://tallerfinal.herokuapp.com/taller/obtenerTodosLosRestaurantes')
       .then(response => {
         response.json()
           .then(datos =>{
             this.setState({
-              arrayDeProfesores: datos.docentes
+              arrayDeProfesores: datos.Restaurantes
             })
             console.log(this.state.arrayDeProfesores);
           })
@@ -56,9 +44,9 @@ class App extends Component {
           response.json()
             .then(datos =>{
               this.setState({
-                arrayDeRestaurantes1: datos.Promociones
+                arrayDePromociones: datos.Promociones
               })
-              console.log(this.state.arrayDeRestaurantes1);
+              console.log(this.state.arrayDePromociones);
             })
             .catch(err => console.log(err))
         })
@@ -89,9 +77,9 @@ class App extends Component {
 
   obtenerCardsConDocentesDesdeElBack = () => {
     let arrayDeCardsHTML = [];
-    for (let i = 0; i < this.state.arrayDeRestaurantes1.length; i++) {
+    for (let i = 0; i < this.state.arrayDePromociones.length; i++) {
       arrayDeCardsHTML.push(
-        <TarjetaDePromociones promocion="2x1" restaurante={this.state.arrayDeRestaurantes1[i]}></TarjetaDePromociones>
+        <TarjetaDePromociones promocion="2x1" restaurante={this.state.arrayDePromociones[i]}></TarjetaDePromociones>
         
       )
      
